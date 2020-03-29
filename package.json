@@ -1,0 +1,19 @@
+{
+  "name": "schematicgenerator",
+  "version": "1.0.0",
+  "description": "Program do tworzenie schematow i generowania ich do pliku pdf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Desmord/SchematicGenerator.git"
+  },
+  "author": "MikolajChojnacki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Desmord/SchematicGenerator/issues"
+  },
+  "homepage": "https://github.com/Desmord/SchematicGenerator#readme"
+}
