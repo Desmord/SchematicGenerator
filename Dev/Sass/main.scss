@@ -47,9 +47,20 @@ body{
     "properties-menu properties-menu save-inport-menu",
 }
 
-@import './Tools-Menu/_toolsMenu.scss'
+@media all and (max-width:1400px){
+    body{
+        font-size: $font-size * 0.9;
+    }
+}
 
-// @use './Tools-Menu/toolsMenu.scss';
+@media all and (max-width:1000px){
+    body{
+        font-size: $font-size * 0.65;
+    }
+}
+
+
+@import './Tools-Menu/toolsMenu.scss'
 
 //---------------------------------------------
 // nav{
