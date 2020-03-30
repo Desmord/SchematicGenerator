@@ -47,6 +47,11 @@
         font-weight: 700;
         color: darken($font-color, 50%);
         border-left: 1px solid rgba(0,0,0,0.1);
+
+        i{
+            @include flex-box();
+            font-size: 0.6em;
+        }
     }
 
 }
@@ -63,11 +68,17 @@
     border-bottom: none;
 }
 
+.tool-button[tool="diamond"] .tool-button__icon i{
+    transform: rotate(45deg);
+}
+
 @for $i from 1 through 6{
     .tool-button:nth-child(#{$i}){
         .tool-button__hover-background{
             background-color:hsla(55 * $i, 69%, 61.8%,0.5);
         }
+        .tool-button__icon i{
+            color:hsla(55 * $i, 69%, 61.8%,0.8);
+        }
     }
 }
-

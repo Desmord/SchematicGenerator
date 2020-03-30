@@ -21,15 +21,15 @@ body {
 .container {
   width: 80%;
   min-width: 800px;
-  max-width: 1400px;
+  max-width: 1600px;
   height: 90%;
   min-height: 500px;
   max-height: 800px;
   display: grid;
   gap: 1.5em 1em;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 8fr 1fr;
-  grid-template-areas: "tools-menu canvas canvas", "properties-menu properties-menu save-inport-menu";
+  grid-template-areas: "tools-menu canvas", "properties-menu properties-menu save-inport-menu";
 }
 
 @media all and (max-width: 1400px) {
@@ -105,6 +105,12 @@ body {
   color: gray;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
+.tool-button__icon i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6em;
+}
 
 .tool-button:hover > .tool-button__hover-background {
   width: 100%;
@@ -118,28 +124,50 @@ body {
   border-bottom: none;
 }
 
+.tool-button[tool=diamond] .tool-button__icon i {
+  transform: rotate(45deg);
+}
+
 .tool-button:nth-child(1) .tool-button__hover-background {
   background-color: rgba(225, 214, 90, 0.5);
+}
+.tool-button:nth-child(1) .tool-button__icon i {
+  color: rgba(225, 214, 90, 0.8);
 }
 
 .tool-button:nth-child(2) .tool-button__hover-background {
   background-color: rgba(113, 225, 90, 0.5);
 }
+.tool-button:nth-child(2) .tool-button__icon i {
+  color: rgba(113, 225, 90, 0.8);
+}
 
 .tool-button:nth-child(3) .tool-button__hover-background {
   background-color: rgba(90, 225, 191, 0.5);
+}
+.tool-button:nth-child(3) .tool-button__icon i {
+  color: rgba(90, 225, 191, 0.8);
 }
 
 .tool-button:nth-child(4) .tool-button__hover-background {
   background-color: rgba(90, 135, 225, 0.5);
 }
+.tool-button:nth-child(4) .tool-button__icon i {
+  color: rgba(90, 135, 225, 0.8);
+}
 
 .tool-button:nth-child(5) .tool-button__hover-background {
   background-color: rgba(169, 90, 225, 0.5);
 }
+.tool-button:nth-child(5) .tool-button__icon i {
+  color: rgba(169, 90, 225, 0.8);
+}
 
 .tool-button:nth-child(6) .tool-button__hover-background {
   background-color: rgba(225, 90, 158, 0.5);
+}
+.tool-button:nth-child(6) .tool-button__icon i {
+  color: rgba(225, 90, 158, 0.8);
 }
 
 .canvas-container {
@@ -156,6 +184,9 @@ body {
   height: 95%;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.canvas-container__canvas:hover {
+  cursor: crosshair;
 }
 
 /*# sourceMappingURL=main.css.map */
