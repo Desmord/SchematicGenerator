@@ -2,12 +2,39 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  line-height: 1;
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #6db9cc;
+  overflow: hidden;
+  background: linear-gradient(to right, #a0cef8, #d0e7fc);
+  font-family: "PT Sans", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.container {
+  width: 80%;
+  min-width: 800px;
+  max-width: 1400px;
+  height: 90%;
+  min-height: 500px;
+  max-height: 800px;
+  display: grid;
+  gap: 1.5em 1em;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 8fr 1fr;
+  grid-template-areas: "tools-menu convas canvas", "properties-menu properties-menu save-inport-menu";
+}
+
+.tools-menu {
+  grid-area: "tools-menu";
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,10 +1,99 @@
+$font:  'PT Sans', sans-serif;
+$font-color: rgb(255,255,255);
+$font-size: 20px;
+$back-ground-color: rgb(160, 206, 248);
+
+@mixin flex-box() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//-----------------------------------------------------------
+//-----------------------------------------------------------
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    line-height: 1;
 }
+
 body{
+    @include flex-box();
+
     width: 100vw;
     height: 100vh;
-    background-color: rgb(109, 185, 204);
+    overflow: hidden;
+    background:linear-gradient(to right,$back-ground-color,lighten($back-ground-color,10%));
+    font-family: $font;
+    font-size: $font-size;
+    color: $font-color;
 }
+
+.container{
+    width: 80%;
+    min-width: 800px;
+    max-width: 1400px;
+    height: 90%;
+    min-height: 500px;
+    max-height: 800px;
+    display: grid;
+    gap: 1.5em 1em;
+    grid-template-columns:1fr 4fr 1fr;
+    grid-template-rows: 8fr 1fr;
+    grid-template-areas:
+    "tools-menu convas canvas",
+    "properties-menu properties-menu save-inport-menu",
+}
+
+@import './Tools-Menu/_toolsMenu.scss'
+
+// @use './Tools-Menu/toolsMenu.scss';
+
+//---------------------------------------------
+// nav{
+//     wlasciwosc: cos;
+
+//     ul{
+//         wlasciwosc: cos;
+//     }
+
+//     ele1{
+//         wlasciwosc: cos;
+//     }
+// }
+
+
+//---------------------------------------------
+// nav{
+
+    // &:hover{
+
+    // }
+
+//     &__elemenr{
+//         wlasciwosc: cos;
+//     }
+
+// }
+
+
+//---------------------------------------------
+// import->  @use 'sciazka/plik'
+
+
+//---------------------------------------------
+// %kalasa{
+//     wlasciwosc: cos;
+    //     wlasciwosc: cos;
+    //     wlasciwosc: cos;
+// }
+
+// .element{
+//     @extend %klasa;
+//     wlasciwosc: cos;
+// }
+
+//---------------------------------------------
+// element[nazwa="nazwaAtrybutu"]{}
