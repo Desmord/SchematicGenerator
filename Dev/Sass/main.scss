@@ -2,6 +2,7 @@ $font:  'PT Sans', sans-serif;
 $font-color: rgb(255,255,255);
 $font-size: 20px;
 $back-ground-color: rgb(160, 206, 248);
+$menus-back-ground-color: rgba(255,255,255,0.8);
 
 @mixin flex-box() {
     display: flex;
@@ -43,7 +44,7 @@ body{
     grid-template-columns:1fr 4fr 1fr;
     grid-template-rows: 8fr 1fr;
     grid-template-areas:
-    "tools-menu convas canvas",
+    "tools-menu canvas canvas",
     "properties-menu properties-menu save-inport-menu",
 }
 
@@ -60,7 +61,8 @@ body{
 }
 
 
-@import './Tools-Menu/toolsMenu.scss'
+@import './Tools-Menu/toolsMenu.scss';
+@import './Canvas_container/canvasContainer.scss';
 
 //---------------------------------------------
 // nav{
