@@ -29,7 +29,7 @@ body {
   gap: 1.5em 1em;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 8fr 1fr;
-  grid-template-areas: "tools-menu canvas", "properties-menu properties-menu save-inport-menu";
+  grid-template-areas: "tools-menu canvas" "properties properties";
 }
 
 @media all and (max-width: 1400px) {
@@ -46,10 +46,34 @@ body {
   grid-area: "tools-menu";
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fit, minmax(25px, 40px));
+  grid-template-rows: repeat(6, minmax(25px, 40px)) 1em 1fr;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
+}
+.tools-menu__color-chooser {
+  grid-column: 1/1;
+  grid-row: 8/8;
+  margin-left: 41%;
+  width: 18%;
+  height: 18%;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: all 0.2s ease-out;
+}
+.tools-menu__color-chooser i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+  color: rgba(113, 90, 225, 0.5);
+}
+.tools-menu__color-chooser:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
 }
 
 .tools-menu:nth-child(1) {
@@ -77,6 +101,9 @@ body {
   border-bottom-right-radius: 4px;
   background-color: #c74d4d;
   transition: all 0.3s ease-in-out;
+}
+.tool-button__hover-background--active {
+  width: 100%;
 }
 .tool-button__text {
   display: flex;
@@ -187,6 +214,50 @@ body {
 }
 .canvas-container__canvas:hover {
   cursor: crosshair;
+}
+
+.properties-menu {
+  grid-area: properties;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 5fr 2fr 2fr 2fr 1fr 7fr 2fr 1px;
+  grid-template-rows: 1fr;
+  grid-template-areas: " color-chooser font-size-input width-input height-input subbmit-button . generate-pdf-button";
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
+}
+.properties-menu__font-size-input {
+  grid-area: font-size-input;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+  resize: none;
+  background-color: rgba(194, 113, 113, 0.8);
+}
+.properties-menu__width-input {
+  grid-area: width-input;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+  resize: none;
+  background-color: #49c480;
+}
+.properties-menu__height-input {
+  grid-area: height-input;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+  resize: none;
+  background-color: #4b76ad;
+}
+.properties-menu__subbmit-button {
+  grid-area: subbmit-button;
+  background-color: #c9b24e;
+}
+.properties-menu__generate-pdf-button {
+  grid-area: generate-pdf-button;
+  background-color: #d85c96;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -44,8 +44,8 @@ body{
     grid-template-columns:1fr 4fr;
     grid-template-rows: 8fr 1fr;
     grid-template-areas:
-    "tools-menu canvas",
-    "properties-menu properties-menu save-inport-menu",
+    "tools-menu canvas"
+    "properties properties";
 }
 
 @media all and (max-width:1400px){
@@ -65,49 +65,3 @@ body{
 @import './Canvas_container/canvasContainer.scss';
 @import './Properties-menu/propertiesMenu.scss';
 
-//---------------------------------------------
-// nav{
-//     wlasciwosc: cos;
-
-//     ul{
-//         wlasciwosc: cos;
-//     }
-
-//     ele1{
-//         wlasciwosc: cos;
-//     }
-// }
-
-
-//---------------------------------------------
-// nav{
-
-    // &:hover{
-
-    // }
-
-//     &__elemenr{
-//         wlasciwosc: cos;
-//     }
-
-// }
-
-
-//---------------------------------------------
-// import->  @use 'sciazka/plik'
-
-
-//---------------------------------------------
-// %kalasa{
-//     wlasciwosc: cos;
-    //     wlasciwosc: cos;
-    //     wlasciwosc: cos;
-// }
-
-// .element{
-//     @extend %klasa;
-//     wlasciwosc: cos;
-// }
-
-//---------------------------------------------
-// element[nazwa="nazwaAtrybutu"]{}
