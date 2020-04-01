@@ -1,0 +1,39 @@
+.input{
+    overflow: hidden;
+    white-space: nowrap;
+    outline: none;
+    resize: none;
+    margin: auto 0px;
+    min-width: 100px;
+    max-width: 200px;
+    min-height: 25px;
+    max-height: 40px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    border:1px solid rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.input::placeholder{
+    font-size: 0.6em;
+    font-weight: 700;
+}
+
+.input:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+}
+
+.input[tool="font-size"]{
+    grid-area: font-size-input;
+}
+
+.input[tool="canvas-width"]{
+    grid-area: width-input;
+}
+
+.input[tool="canvas-height"]{
+    grid-area: height-input;
+}
