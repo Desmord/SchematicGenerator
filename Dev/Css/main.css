@@ -69,7 +69,7 @@ body {
   width: 100%;
   height: 100%;
   font-size: 2em;
-  color: rgba(111, 225, 90, 0.5);
+  color: rgba(225, 115, 90, 0.5);
 }
 .tools-menu__color-chooser:hover {
   cursor: pointer;
@@ -232,59 +232,60 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-area: subbmit-button;
   position: relative;
   margin: auto 0px;
   min-width: 100px;
   max-width: 200px;
   min-height: 30px;
   max-height: 45px;
-  background-color: rgba(90, 225, 158, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   overflow: hidden;
   font-size: 1.2em;
   font-weight: 700;
   transition: all 0.2s ease-in-out;
+  grid-area: subbmit-button;
+  background-color: rgba(90, 225, 158, 0.5);
 }
 .properties-menu__subbmit-button-animation-background {
   position: absolute;
   left: 50%;
   top: 0px;
   height: 100%;
-  background-color: rgba(90, 225, 158, 0.8);
+  background-color: #5ae19e;
 }
 .properties-menu__subbmit-button:hover {
   cursor: pointer;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3), 0px 0px 8px 1px rgba(0, 0, 0, 0.4);
-  background-color: rgba(90, 225, 158, 0.6);
+  background-color: rgba(90, 225, 158, 0.7);
 }
 .properties-menu__generate-pdf-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-area: generate-pdf-button;
   position: relative;
   margin: auto 0px;
   min-width: 100px;
   max-width: 200px;
   min-height: 30px;
   max-height: 45px;
-  background-color: rgba(90, 158, 225, 0.4);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  overflow: hidden;
   font-size: 1.2em;
   font-weight: 700;
   transition: all 0.2s ease-in-out;
+  grid-area: generate-pdf-button;
+  background-color: rgba(90, 158, 225, 0.5);
 }
 .properties-menu__generate-pdf-button-animation-background {
   position: absolute;
   left: 50%;
   top: 0px;
   height: 100%;
-  background-color: rgba(90, 158, 225, 0.8);
+  background-color: #5a9ee1;
 }
 .properties-menu__generate-pdf-button:hover {
   cursor: pointer;
@@ -330,7 +331,7 @@ body {
   color: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 }
 
