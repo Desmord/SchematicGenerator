@@ -3,8 +3,8 @@
     max-height: 50px;
     display: grid;
     gap: 1em;
-    grid-template-columns: 5fr 2fr 2fr 2fr 1fr 7fr 2fr 1px;
-    grid-template-rows:1fr;
+    grid-template-columns: 5fr 2fr 2fr 2fr 2fr 6fr 3fr 1px;
+    grid-template-rows: 1fr;
     grid-template-areas:
         " color-chooser font-size-input width-input height-input subbmit-button . generate-pdf-button";
     background-color: $menus-back-ground-color;
@@ -12,15 +12,99 @@
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
 
     &__subbmit-button {
+        @include flex-box();
+
         grid-area: subbmit-button;
-        background-color: rgb(201, 178, 78);
+        position: relative;
+        margin: auto 0px;
+        min-width: 100px;
+        max-width: 200px;
+        min-height: 30px;
+        max-height: 45px;
+        background-color: hsla(150, 69%, 61.8%, 0.3);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        overflow: hidden;
+        font-size: 1.2em;
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+
+        &-animation-background{
+            position: absolute;
+            left: 50%;
+            top:0px;
+            height: 100%;
+            background-color: hsla(150, 69%, 61.8%, 0.8);
+        }
+
+    }
+
+    &__subbmit-button:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3),
+            0px 0px 8px 1px rgba(0, 0, 0, 0.4);
+        background-color: hsla(150, 69%, 61.8%, 0.6);
     }
 
     &__generate-pdf-button {
+        @include flex-box();
+
         grid-area: generate-pdf-button;
-        background-color: rgb(216, 92, 150);
+        position: relative;
+        margin: auto 0px;
+        min-width: 100px;
+        max-width: 200px;
+        min-height: 30px;
+        max-height: 45px;
+        background-color: hsla(210, 69%, 61.8%, 0.4);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+
+        &-animation-background{
+            position: absolute;
+            left: 50%;
+            top:0px;
+            height: 100%;
+            background-color: hsla(210, 69%, 61.8%, 0.8);
+        }
     }
 
+    &__generate-pdf-button:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3),
+            0px 0px 8px 1px rgba(0, 0, 0, 0.4);
+        background-color: hsla(210, 69%, 61.8%, 0.7);
+    }
+
+}
+
+.properties-menu-buttons-click-animation{
+    animation-name: properties-menu-buttons-click-animation;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes properties-menu-buttons-click-animation{
+     from{
+         width: 0%;
+         opacity: 1;
+         left: 50%;
+         display: block;
+     }
+     to{
+         width: 100%;
+         opacity: 0;
+         left: 0%;
+        display: none;
+        }
 }
 
 @import './Input/input.scss';
