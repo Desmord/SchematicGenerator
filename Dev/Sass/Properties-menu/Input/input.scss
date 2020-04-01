@@ -9,21 +9,24 @@
     min-height: 25px;
     max-height: 40px;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: 700;
+    color: rgba(0,0,0,0.6);
     border:1px solid rgba(0,0,0,0.2);
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
     transition: all 0.2s ease-in-out;
 }
 
 .input::placeholder{
     font-size: 0.6em;
+    color: rgba(0,0,0,0.5);
     font-weight: 700;
 }
 
 .input:hover{
     cursor: pointer;
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
 }
 
 .input[tool="font-size"]{
@@ -31,7 +34,7 @@
 }
 
 .input[tool="font-size"]:focus{
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
 }
 
 .input[tool="canvas-width"]{
@@ -39,7 +42,7 @@
 }
 
 .input[tool="canvas-width"]:focus{
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
 }
 
 .input[tool="canvas-height"]{
@@ -47,5 +50,5 @@
 }
 
 .input[tool="canvas-height"]:focus{
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
 }
