@@ -1,0 +1,75 @@
+.color-chooser {
+    position: relative;
+    width: 8em;
+    height: 8em;
+    left: 20%;
+    top: 0em;
+    background-color: $menus-back-ground-color;
+    z-index: 30;
+    // display: grid;
+    display: none;
+    grid-gap: 2px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+
+    &__color {
+        margin: 1px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &__color:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.8);
+    }
+}
+
+
+@for $i from 1 through 25 {
+    .color-chooser :nth-child(#{$i}) {
+        background-color: hsla(12 * $i, 69%, 61.8%, 0.7);
+    }
+}
+
+
+.color-chooser-show-animation {
+    animation-name: color-chooser-show-animation;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.color-chooser-close-animation {
+    animation-name: color-chooser-hide-animation;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes color-chooser-show-animation {
+    from {
+        opacity: 0;
+        display: none;
+    }
+
+
+    to {
+        display: flex;
+        opacity: 1;
+    }
+}
+
+@keyframes color-chooser-hide-animation {
+    from {
+        display: flex;
+        opacity: 1;
+    }
+
+
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
