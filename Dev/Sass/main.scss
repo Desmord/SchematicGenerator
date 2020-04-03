@@ -4,6 +4,11 @@ $font-size: 20px;
 $back-ground-color: rgb(160, 206, 248);
 $menus-back-ground-color: rgba(255,255,255,0.8);
 
+$tooltip-translate-y: 0;
+$tooltip-scale: 0;
+$tooltip-arrow-size: 20px;
+$tooltip-color: hsla(150, 69%, 61.8%,0.5);
+
 @mixin flex-box() {
     display: flex;
     justify-content: center;
