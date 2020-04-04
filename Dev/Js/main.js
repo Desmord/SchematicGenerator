@@ -1,3 +1,6 @@
 import '../Css/main.css'
 
-console.log(`Probna informacjia "hej"`);
+const ToolsUI = require(`./ToolsUI/ToolsUI`).ToolsUI;
+
+
+let toolsUI = new ToolsUI();
