@@ -8,34 +8,60 @@ class ToolsUI {
     }
 
     init() {
+        this.setEvents();
+    }
+
+    setEvents() {
         this.setMainToolsEvents();
+        this.setColorChooserEvents();
     }
 
     setMainToolsEvents() {
 
-        MAIN_TOOLS_BUTTONS.forEach(button => {
-            button.getTool().addEventListener(`click`, () => {
-                if (button.getTool().getAttribute(`tool`) != `color`) {
-                    this.clearAllActiveButtonStatus();
-                    this.setButtonActiveStatus(button.getTool());
+        MAIN_TOOLS_BUTTONS.forEach(getButton => {
+            getButton().addEventListener(`click`, () => {
+
+                if (getButton().getAttribute(`tool`) != `color`) {
+                    this.changeCurrentActiveButton(getButton());
                 }
+
             })
         });
 
     }
 
-    setButtonActiveStatus(button) {
+    setColorChooserEvents() {
+
+        MAIN_TOOLS_BUTTONS.find(toolsButton => {
+            return toolsButton().getAttribute(`tool`) == `color`;
+        })().addEventListener(`click`, () => {
+            COLOR_PANEL().style.display = `grid`;
+            COLOR_PANEL().classList.add(`color-chooser-show-animation`);
+        })
+
+        //  zdarzenie colorow - klikniec -> wybor koloru + zmiana w fabrycie i powiadomienie wszystkich narzendzie + znikanie wyboru
+        // zdarzenie zjechania myszka - znikanie wybory
+
+
+    }
+
+    changeCurrentActiveButton(button) {
+        this.clearAllActiveButton();
+        this.setActiveButton(button);
+    }
+
+    setActiveButton(button) {
         const buttonBackgroundNodeIndex = 1;
         button
             .childNodes[buttonBackgroundNodeIndex]
             .classList.add(`tool-button__hover-background--active`);
     }
 
-    clearAllActiveButtonStatus() {
+    clearAllActiveButton() {
 
         MAIN_TOOLS_BUTTONS.forEach(button => {
             const buttonBackgroundNodeIndex = 1;
-            button.getTool()
+            button()
                 .childNodes[buttonBackgroundNodeIndex]
                 .classList.remove(`tool-button__hover-background--active`);
         });

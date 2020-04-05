@@ -91,7 +91,7 @@ body {
   width: 100%;
   height: 100%;
   font-size: 2em;
-  color: rgba(225, 122, 90, 0.5);
+  color: rgba(146, 225, 90, 0.5);
 }
 .tools-menu__color-chooser:hover {
   cursor: pointer;
@@ -509,7 +509,7 @@ body {
 }
 .color-chooser__color {
   margin: 1px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .color-chooser__color:hover {
   cursor: pointer;
