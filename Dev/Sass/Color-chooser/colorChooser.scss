@@ -34,7 +34,7 @@
 
 .color-chooser-show-animation {
     animation-name: color-chooser-show-animation;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -42,9 +42,9 @@
 
 .color-chooser-close-animation {
     animation-name: color-chooser-hide-animation;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-timing-function: ease-in-out;
-    animation-fill-mode: backwards;
+    animation-fill-mode: forwards;
     animation-iteration-count: 1;
 }
 
@@ -56,14 +56,14 @@
 
 
     to {
-        display: flex;
+        display: grid;
         opacity: 1;
     }
 }
 
 @keyframes color-chooser-hide-animation {
     from {
-        display: flex;
+        display: grid;
         opacity: 1;
     }
 

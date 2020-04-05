@@ -1,6 +1,8 @@
 const MAIN_TOOLS_BUTTONS = require(`../DOMObjects/DOMObjects.js`).DOMObjects.mainTools;
+const COLOR_TOOL_BUTTON = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorTool;
 const MODAL = require(`../DOMObjects/DOMObjects.js`).DOMObjects.modal;
 const COLOR_PANEL = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorPanel;
+const COLOR_PANEL_COLOR_BUTTONS = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorPanelColorButtons;
 
 class ToolsUI {
     constructor() {
@@ -13,41 +15,85 @@ class ToolsUI {
 
     setEvents() {
         this.setMainToolsEvents();
-        this.setColorChooserEvents();
+        this.setColorChoosingEvents();
     }
 
     setMainToolsEvents() {
 
-        MAIN_TOOLS_BUTTONS.forEach(getButton => {
-            getButton().addEventListener(`click`, () => {
-
-                if (getButton().getAttribute(`tool`) != `color`) {
-                    this.changeCurrentActiveButton(getButton());
-                }
-
+        MAIN_TOOLS_BUTTONS.forEach(button => {
+            button().addEventListener(`click`, () => {
+                    this.changeCurrentActiveButton(button());
             })
         });
 
     }
 
-    setColorChooserEvents() {
+    setColorChoosingEvents() {
+        this.setColorToolEvents();
+        this.setColorPanelEvents();
+        this.setColorPanelColorButtonsEvents();
+    }
 
-        MAIN_TOOLS_BUTTONS.find(toolsButton => {
-            return toolsButton().getAttribute(`tool`) == `color`;
-        })().addEventListener(`click`, () => {
-            COLOR_PANEL().style.display = `grid`;
-            COLOR_PANEL().classList.add(`color-chooser-show-animation`);
+    setColorToolEvents() {
+
+        COLOR_TOOL_BUTTON().addEventListener(`click`, () => {
+            this.showColorPanel();
         })
-
-        //  zdarzenie colorow - klikniec -> wybor koloru + zmiana w fabrycie i powiadomienie wszystkich narzendzie + znikanie wyboru
-        // zdarzenie zjechania myszka - znikanie wybory
-
 
     }
 
-    changeCurrentActiveButton(button) {
+    setColorPanelEvents() {
+
+        COLOR_PANEL().addEventListener(`mouseleave`, () => {
+            this.hideColorPanel();
+        })
+
+    }
+
+    setColorPanelColorButtonsEvents() {
+
+        COLOR_PANEL_COLOR_BUTTONS().forEach(colorButton => {
+            colorButton.addEventListener(`click`, e => {
+                const selectedColor = window.getComputedStyle(e.target, null).getPropertyValue(`background-color`);
+
+                COLOR_TOOL_BUTTON().childNodes[1].style.color = selectedColor;
+                this.hideColorPanel();
+            })
+        })
+
+    }
+
+    showColorPanel() {
+        const animationTime = 300;
+
+        COLOR_PANEL().style.display = `grid`;
+        COLOR_PANEL().classList.add(`color-chooser-show-animation`);
+        setTimeout(() => {
+            COLOR_PANEL().classList.remove(`color-chooser-show-animation`);
+        }, animationTime);
+    }
+
+    hideColorPanel() {
+        const animationTime = 300;
+
+        COLOR_PANEL().classList.add(`color-chooser-close-animation`);
+        setTimeout(() => {
+            COLOR_PANEL().style.display = `none`;
+            COLOR_PANEL().classList.remove(`color-chooser-close-animation`);
+        }, animationTime);
+    }
+
+    displayModal(){
+
+    }
+
+    hideModal(){
+
+    }
+
+    changeCurrentActiveButton(selectedButton) {
         this.clearAllActiveButton();
-        this.setActiveButton(button);
+        this.setActiveButton(selectedButton);
     }
 
     setActiveButton(button) {
