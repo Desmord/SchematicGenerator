@@ -1,14 +1,12 @@
 const DOMObjects = {
-    mainTools: [
-        () => document.querySelector(`.tool-button[tool="square"]`),
-        () => document.querySelector(`.tool-button[tool="diamond"]`),
-        () => document.querySelector(`.tool-button[tool="text"]`),
-        () => document.querySelector(`.tool-button[tool="line"]`),
-        () => document.querySelector(`.tool-button[tool="arrow"]`),
-        () => document.querySelector(`.tool-button[tool="eraser"]`)
-    ],
+    mainTools: () => document.querySelectorAll(`.tool-button`),
     colorTool: () => document.querySelector(`.tools-menu__color-chooser`),
-    modal: () => document.querySelector(`.modal`),
+    modal: {
+        modal: () => document.querySelector(`.modal`),
+        modalText: () => document.querySelector(`.modal__info-text`),
+        modalBackground: () => document.querySelector(`.modal__background`),
+        modalCloseButton: () => document.querySelector(`.modal__close-button`)
+    },
     colorPanel: () => document.querySelector(`.color-chooser`),
     colorPanelColorButtons: () => document.querySelectorAll(`.color-chooser__color`)
 

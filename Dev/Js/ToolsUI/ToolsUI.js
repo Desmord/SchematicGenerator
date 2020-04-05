@@ -2,7 +2,7 @@ const MAIN_TOOLS_BUTTONS = require(`../DOMObjects/DOMObjects.js`).DOMObjects.mai
 const COLOR_TOOL_BUTTON = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorTool;
 const MODAL = require(`../DOMObjects/DOMObjects.js`).DOMObjects.modal;
 const COLOR_PANEL = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorPanel;
-const COLOR_PANEL_COLOR_BUTTONS = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorPanelColorButtons;
+const COLOR_PANEL_BUTTONS = require(`../DOMObjects/DOMObjects.js`).DOMObjects.colorPanelColorButtons;
 
 class ToolsUI {
     constructor() {
@@ -16,13 +16,14 @@ class ToolsUI {
     setEvents() {
         this.setMainToolsEvents();
         this.setColorChoosingEvents();
+        this.setModalEvents();
     }
 
     setMainToolsEvents() {
 
-        MAIN_TOOLS_BUTTONS.forEach(button => {
-            button().addEventListener(`click`, () => {
-                    this.changeCurrentActiveButton(button());
+        MAIN_TOOLS_BUTTONS().forEach(button => {
+            button.addEventListener(`click`, () => {
+                    this.changeCurrentActiveButton(button);
             })
         });
 
@@ -52,7 +53,7 @@ class ToolsUI {
 
     setColorPanelColorButtonsEvents() {
 
-        COLOR_PANEL_COLOR_BUTTONS().forEach(colorButton => {
+        COLOR_PANEL_BUTTONS().forEach(colorButton => {
             colorButton.addEventListener(`click`, e => {
                 const selectedColor = window.getComputedStyle(e.target, null).getPropertyValue(`background-color`);
 
@@ -83,12 +84,42 @@ class ToolsUI {
         }, animationTime);
     }
 
-    displayModal(){
+    setModalEvents(){
+
+        MODAL.modalCloseButton().addEventListener(`click`,()=>{
+            this.hideModal();
+        })
+
+        MODAL.modalBackground().addEventListener(`click`,()=>{
+            this.hideModal();
+        })
 
     }
 
-    hideModal(){
+    /**
+     * Displays modal element with given text
+     * @param { string } text
+     */
+    displayModal(text){
+        const animationTime = 300;
 
+        MODAL.modalText().innerHTML = text;
+        MODAL.modal().style.display = `flex`;
+        MODAL.modal().classList.add(`modal-show-animation`);
+
+        setTimeout(() => {
+            MODAL.modal().classList.remove(`modal-show-animation`);
+        }, animationTime);
+    }
+
+    hideModal(){
+        const animationTime = 300;
+
+        MODAL.modal().classList.add(`modal-close-animation`);
+        setTimeout(() => {
+            MODAL.modal().style.display = `none`;
+            MODAL.modal().classList.remove(`modal-close-animation`);
+        }, animationTime);
     }
 
     changeCurrentActiveButton(selectedButton) {
@@ -105,9 +136,9 @@ class ToolsUI {
 
     clearAllActiveButton() {
 
-        MAIN_TOOLS_BUTTONS.forEach(button => {
+        MAIN_TOOLS_BUTTONS().forEach(button => {
             const buttonBackgroundNodeIndex = 1;
-            button()
+            button
                 .childNodes[buttonBackgroundNodeIndex]
                 .classList.remove(`tool-button__hover-background--active`);
         });
