@@ -1,12 +1,17 @@
 const DOMObjects = require(`../DOMObjects/DOMObjects.js`).DOMObjects;
+const CanvasUI = require(`../CanvasUI/CanvasUI.js`).CanvasUI;
+const ToolFabric = require(`../ToolFabric/ToolFabric.js`).ToolFabric;
 
 class ToolsUI {
     constructor() {
+        this.ToolFabric = new ToolFabric();
+        this.CanvasUI = new CanvasUI();
         this.init()
     }
 
     init() {
         this.setEvents();
+        this.CanvasUI.setTool(this.ToolFabric.getTool(`square`));
     }
 
     setEvents() {
@@ -20,6 +25,11 @@ class ToolsUI {
         DOMObjects.getMainTools().forEach(button => {
             button.addEventListener(`click`, () => {
                 this.changeCurrentActiveButton(button);
+                this.CanvasUI.setTool(
+                    this.ToolFabric.getTool(
+                        button.getAttribute(`tool`)
+                    )
+                );
             })
         });
 
@@ -32,11 +42,9 @@ class ToolsUI {
     }
 
     setColorToolEvents() {
-
         DOMObjects.getColorChooserButton().addEventListener(`click`, () => {
             this.showColorPanel();
         })
-
     }
 
     setColorPanelEvents() {
@@ -54,6 +62,7 @@ class ToolsUI {
                 const selectedColor = window.getComputedStyle(e.target, null).getPropertyValue(`background-color`);
 
                 DOMObjects.getColorChooserButton().childNodes[1].style.color = selectedColor;
+                this.ToolFabric.updateColor(selectedColor);
                 this.hideColorPanel();
             })
         })
@@ -138,6 +147,7 @@ class ToolsUI {
                 .childNodes[buttonBackgroundNodeIndex]
                 .classList.remove(`tool-button__hover-background--active`);
         });
+
     }
 }
 

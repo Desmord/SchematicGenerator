@@ -17,6 +17,10 @@ class DOMObjects {
 
     static getModalCloseButton() { return document.querySelector(`.modal__close-button`) }
 
+    static getCanvasContainer() { return document.querySelector(`.canvas-container`) }
+
+    static getCanvas() { return document.querySelector(`.canvas-container__canvas`) }
+
 }
 
 module.exports = {
