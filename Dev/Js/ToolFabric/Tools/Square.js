@@ -10,28 +10,44 @@ class Square {
         this.endPoint = {
             x: 0,
             y: 0
-        }
+        };
+        this.canvasDrawingInitialState = null;
     }
-    /* tutaj i w innych przekazujmy canvas, x,y i inne potrzebne */
+
     onMouseDown(canvas, x, y) {
         let ctx = canvas.getContext(`2d`);
+        let image = document.createElement(`img`);
 
+        image.src = canvas.toDataURL(`image/png`);
+
+        this.canvasDrawingInitialState = image;
         this.isDrawing = true;
         this.startPoint.x = x - canvas.offsetLeft;
         this.startPoint.y = y - canvas.offsetTop;
 
-        // console.log(this.startPoint.x);
-        // console.log(canvas);
-
-        // ctx.beginPath(0, 0);
-        // ctx.fillStyle = this.color;
-        // ctx.fillRect(20, 20, 150, 100)
-
     }
 
-    onMouseMove() {
+    onMouseMove(canvas, x, y) {
         if (this.isDrawing) {
-            console.log(`ruch kwadratu`);
+
+            window.requestAnimationFrame(() => {
+                let ctx = canvas.getContext(`2d`);
+
+                this.endPoint.x = x - canvas.offsetLeft;
+                this.endPoint.y = y - canvas.offsetTop;
+
+                ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+                ctx.drawImage(this.canvasDrawingInitialState, 0, 0);
+
+                ctx.fillStyle = this.color;
+                ctx.fillRect(
+                    this.startPoint.x,
+                    this.startPoint.y,
+                    this.endPoint.x - this.startPoint.x,
+                    this.endPoint.y - this.startPoint.y
+                )
+
+            })
         }
     }
 
@@ -42,6 +58,9 @@ class Square {
         this.endPoint.x = x - canvas.offsetLeft;
         this.endPoint.y = y - canvas.offsetTop;
 
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        ctx.drawImage(this.canvasDrawingInitialState, 0, 0);
+
         ctx.fillStyle = this.color;
         ctx.fillRect(
             this.startPoint.x,
@@ -49,6 +68,7 @@ class Square {
             this.endPoint.x - this.startPoint.x,
             this.endPoint.y - this.startPoint.y
         )
+
     }
 
     updateColor(color) {
