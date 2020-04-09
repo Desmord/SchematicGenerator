@@ -1,3 +1,5 @@
+const jsPDF = require(`jspdf`);
+
 const DOMObjects = require(`../DOMObjects/DOMObjects.js`).DOMObjects;
 const CanvasUI = require(`../CanvasUI/CanvasUI.js`).CanvasUI;
 const ToolFabric = require(`../ToolFabric/ToolFabric.js`).ToolFabric;
@@ -19,6 +21,7 @@ class ToolsUI {
         this.setColorChoosingEvents();
         this.setModalEvents();
         this.setTextAreaEvent();
+        this.setPropertiesEvetns();
     }
 
     setMainToolsEvents() {
@@ -157,6 +160,56 @@ class ToolsUI {
         textArea.addEventListener(`keyup`, (e) => {
             this.ToolFabric.getTool(`text`).updateText(`${e.target.value}`);
         })
+    }
+
+    setPropertiesEvetns() {
+        let subbmitButton = DOMObjects.getSubbimtPropertiesButton();
+        let widthInput = DOMObjects.getWidthInput();
+        let heightInput = DOMObjects.getHeightInput();
+        let fontSizeInput = DOMObjects.getFontSizeInput();
+        let pdfButton = DOMObjects.getGeneratePDFButton();
+
+        subbmitButton.addEventListener(`click`, () => {
+            subbmitButton.children[0].classList.add(`properties-menu-buttons-click-animation`);
+
+            this.ToolFabric.getTool(`text`).updateFontSize(`${fontSizeInput.value}px`)
+
+            DOMObjects.getCanvas().width = `${widthInput.value}`;
+            DOMObjects.getCanvas().style.width = `${widthInput.value}px`;
+            DOMObjects.getCanvas().height = `${heightInput.value}`;
+            DOMObjects.getCanvas().style.height = `${heightInput.value}px`;
+
+
+            setTimeout(() => {
+                subbmitButton.children[0].classList.remove(`properties-menu-buttons-click-animation`);
+
+            }, 1000);
+        });
+
+        pdfButton.addEventListener(`click`,()=>{
+
+            let width = DOMObjects.getCanvas().width;
+            let height = DOMObjects.getCanvas().height;
+            let pdf = null;
+
+
+            if (width > height) {
+                pdf = new jsPDF(`l`, `px`, [width,height]);
+            } else {
+                pdf = new jsPDF(`p`, `px`, [height, width]);
+            }
+
+            width = pdf.internal.pageSize.getWidth();
+            height = pdf.internal.pageSize.getHeight();
+
+            let img2 = DOMObjects.getCanvas().toDataURL(`image/jpeg`,1.0);
+
+            pdf.addImage(img2,`JPEG`,0,0,width,height);
+            pdf.save(`moj.pdf`)
+
+
+        })
+
     }
 
 }

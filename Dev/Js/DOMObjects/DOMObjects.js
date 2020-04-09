@@ -25,6 +25,16 @@ class DOMObjects {
 
     static getCanvasTextContainerTextArea() { return document.querySelector(`.canvas-text-input`) }
 
+    static getSubbimtPropertiesButton(){ return document.querySelector(`.properties-menu__subbmit-button`)}
+
+    static getFontSizeInput(){return document.querySelector(`input[tool="font-size"]`);}
+
+    static getWidthInput(){return document.querySelector(`input[tool="canvas-width"]`);}
+
+    static getHeightInput(){return document.querySelector(`input[tool="canvas-height"]`);}
+
+    static getGeneratePDFButton(){ return document.querySelector(`.properties-menu__generate-pdf-button`)};
+
 }
 
 module.exports = {

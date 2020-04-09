@@ -60,21 +60,15 @@ class Text {
     updateFontSize(fontSize) { this.fontSize = fontSize }
 
     drawText() {
-        // let x = this.startPoint.x > this.currentPoint.x ?
-        //     this.currentPoint.x :
-        //     this.startPoint.x;
-        // let y = this.startPoint.y > this.currentPoint.y ?
-        //     this.currentPoint.y :
-        //     this.startPoint.y;
 
         this.context.font = ` ${this.fontSize} 'PT Sans'`;
+        this.context.fillStyle = this.color;
         this.context.textAlign = `center`;
+        console.log(this.fontSize);
 
         let textWidth = this.context.measureText(this.text);
-        // console.log(width);
-
         this.context.fillText(this.text, this.startPoint.x, this.startPoint.y);
-        // console.log(this.text);
+
     }
 
     drawSquare() {

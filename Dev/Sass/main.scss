@@ -30,7 +30,7 @@ body{
 
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: visible;
     background:linear-gradient(to right,$back-ground-color,lighten($back-ground-color,10%));
     font-family: $font;
     font-size: $font-size;
