@@ -12,7 +12,7 @@ class Square {
             x: 0,
             y: 0
         };
-        this.endPoint = {
+        this.currentPoint = {
             x: 0,
             y: 0
         };
@@ -20,12 +20,8 @@ class Square {
     }
 
     onMouseDown(x, y) {
-        let image = document.createElement(`img`);
-        image.src = this.canvas.toDataURL(`image/png`);
-
+        this.saveState();
         this.isDrawing = true;
-        this.canvasDrawingInitialState = image;
-
         this.startPoint.x = x - this.canvas.offsetLeft;
         this.startPoint.y = y - this.canvas.offsetTop;
     }
@@ -33,9 +29,9 @@ class Square {
     onMouseMove(x, y) {
 
         if (this.isDrawing) {
-            this.endPoint.x = x - this.canvas.offsetLeft;
-            this.endPoint.y = y - this.canvas.offsetTop;
- // zmienic czysczenie na tylko z terenu tego co rysujemy by nie mrogalo
+            this.currentPoint.x = x - this.canvas.offsetLeft;
+            this.currentPoint.y = y - this.canvas.offsetTop;
+            // zmienic czysczenie na tylko z terenu tego co rysujemy by nie mrogalo
             this.context.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
             this.context.drawImage(this.canvasDrawingInitialState, 0, 0);
             this.drawSquare();
@@ -44,8 +40,8 @@ class Square {
 
     onMouseUp(x, y) {
         this.isDrawing = false;
-        this.endPoint.x = x - this.canvas.offsetLeft;
-        this.endPoint.y = y - this.canvas.offsetTop;
+        this.currentPoint.x = x - this.canvas.offsetLeft;
+        this.currentPoint.y = y - this.canvas.offsetTop;
 
         this.context.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
         this.context.drawImage(this.canvasDrawingInitialState, 0, 0);
@@ -66,24 +62,35 @@ class Square {
             // left
             this.context.beginPath();
             this.context.moveTo(this.startPoint.x, this.startPoint.y);
-            this.context.lineTo(this.startPoint.x, this.endPoint.y);
+            this.context.lineTo(this.startPoint.x, this.currentPoint.y);
             this.context.stroke();
             //top
             this.context.beginPath();
             this.context.moveTo(this.startPoint.x, this.startPoint.y);
-            this.context.lineTo(this.endPoint.x, this.startPoint.y);
+            this.context.lineTo(this.currentPoint.x, this.startPoint.y);
             this.context.stroke();
             // right
             this.context.beginPath();
-            this.context.moveTo(this.endPoint.x, this.startPoint.y);
-            this.context.lineTo(this.endPoint.x, this.endPoint.y);
+            this.context.moveTo(this.currentPoint.x, this.startPoint.y);
+            this.context.lineTo(this.currentPoint.x, this.currentPoint.y);
             this.context.stroke();
             // bottom
             this.context.beginPath();
-            this.context.moveTo(this.startPoint.x, this.endPoint.y);
-            this.context.lineTo(this.endPoint.x, this.endPoint.y);
+            this.context.moveTo(this.startPoint.x, this.currentPoint.y);
+            this.context.lineTo(this.currentPoint.x, this.currentPoint.y);
             this.context.stroke();
         });
+    }
+
+    saveState() {
+        let image = document.createElement(`img`);
+        image.src = this.canvas.toDataURL(`image/png`);
+        this.canvasDrawingInitialState = image;
+    }
+
+    upadteCurrentPosition(x, y) {
+        this.currentPoint.x = x - this.canvas.offsetLeft;
+        this.currentPoint.y = y - this.canvas.offsetTop;
     }
 }
 
