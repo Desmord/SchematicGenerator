@@ -58,7 +58,7 @@ class Eraser {
             this.context.lineWidth = this.lineWidth;
 
             this.context.beginPath();
-            this.context.fillRect(
+            this.context.clearRect(
                 this.startPoint.x,
                 this.startPoint.y,
                 this.currentPoint.x - this.startPoint.x,

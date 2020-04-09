@@ -21,6 +21,10 @@ class DOMObjects {
 
     static getCanvas() { return document.querySelector(`.canvas-container__canvas`) }
 
+    static getCanvasTextContainer() { return document.querySelector(`.canvas-text-container`) }
+
+    static getCanvasTextContainerTextArea() { return document.querySelector(`.canvas-text-input`) }
+
 }
 
 module.exports = {

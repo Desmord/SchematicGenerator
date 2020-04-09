@@ -18,6 +18,7 @@ class ToolsUI {
         this.setMainToolsEvents();
         this.setColorChoosingEvents();
         this.setModalEvents();
+        this.setTextAreaEvent();
     }
 
     setMainToolsEvents() {
@@ -149,6 +150,15 @@ class ToolsUI {
         });
 
     }
+
+    setTextAreaEvent() {
+        let textArea = DOMObjects.getCanvasTextContainerTextArea();
+
+        textArea.addEventListener(`keyup`, (e) => {
+            this.ToolFabric.getTool(`text`).updateText(`${e.target.value}`);
+        })
+    }
+
 }
 
 module.exports = {
