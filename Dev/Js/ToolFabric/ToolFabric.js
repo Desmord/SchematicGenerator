@@ -1,3 +1,4 @@
+const DOMObjects = require(`../DOMObjects/DOMObjects.js`).DOMObjects;
 const Square = require(`./Tools/Square.js`).Square;
 const Diamond = require(`./Tools/Daimond.js`).Diamond;
 const Text = require(`./Tools/Text.js`).Text;
@@ -7,12 +8,12 @@ const Eraser = require(`./Tools/Eraser.js`).Eraser;
 
 class ToolFabric {
     constructor() {
-        this.square = new Square();
-        this.diamond = new Diamond();
-        this.text = new Text();
-        this.line = new Line();
-        this.arrow = new Arrow();
-        this.eraser = new Eraser();
+        this.square = new Square(DOMObjects.getCanvas());
+        this.diamond = new Diamond(DOMObjects.getCanvas());
+        this.text = new Text(DOMObjects.getCanvas());
+        this.line = new Line(DOMObjects.getCanvas());
+        this.arrow = new Arrow(DOMObjects.getCanvas());
+        this.eraser = new Eraser(DOMObjects.getCanvas());
     }
 
     getTool(tool) {

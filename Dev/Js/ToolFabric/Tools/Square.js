@@ -1,5 +1,9 @@
 class Square {
-    constructor() {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.context = canvas.getContext(`2d`);
+        this.width = canvas.clientWidth;
+        this.height = canvas.clientHeight;
         this.name = `square`;
         this.color = `rgba(90, 171,225,0.7)`;
         this.lineWidth = `5`;
@@ -15,46 +19,37 @@ class Square {
         this.canvasDrawingInitialState = null;
     }
 
-    onMouseDown(canvas, x, y) {
-        let ctx = canvas.getContext(`2d`);
+    onMouseDown(x, y) {
         let image = document.createElement(`img`);
-
-        image.src = canvas.toDataURL(`image/png`);
+        image.src = this.canvas.toDataURL(`image/png`);
 
         this.isDrawing = true;
         this.canvasDrawingInitialState = image;
-        this.startPoint.x = x - canvas.offsetLeft;
-        this.startPoint.y = y - canvas.offsetTop;
 
+        this.startPoint.x = x - this.canvas.offsetLeft;
+        this.startPoint.y = y - this.canvas.offsetTop;
     }
 
-    onMouseMove(canvas, x, y) {
+    onMouseMove(x, y) {
 
         if (this.isDrawing) {
-            let ctx = canvas.getContext(`2d`);
-
-            this.endPoint.x = x - canvas.offsetLeft;
-            this.endPoint.y = y - canvas.offsetTop;
-
-            ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-            ctx.drawImage(this.canvasDrawingInitialState, 0, 0);
-
-            this.drawSquare(ctx);
+            this.endPoint.x = x - this.canvas.offsetLeft;
+            this.endPoint.y = y - this.canvas.offsetTop;
+ // zmienic czysczenie na tylko z terenu tego co rysujemy by nie mrogalo
+            this.context.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+            this.context.drawImage(this.canvasDrawingInitialState, 0, 0);
+            this.drawSquare();
         }
     }
 
-    onMouseUp(canvas, x, y) {
-        let ctx = canvas.getContext(`2d`);
-
+    onMouseUp(x, y) {
         this.isDrawing = false;
-        this.endPoint.x = x - canvas.offsetLeft;
-        this.endPoint.y = y - canvas.offsetTop;
+        this.endPoint.x = x - this.canvas.offsetLeft;
+        this.endPoint.y = y - this.canvas.offsetTop;
 
-        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-        ctx.drawImage(this.canvasDrawingInitialState, 0, 0);
-
-        this.drawSquare(ctx);
-
+        this.context.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+        this.context.drawImage(this.canvasDrawingInitialState, 0, 0);
+        this.drawSquare();
     }
 
     updateColor(color) {
@@ -63,31 +58,31 @@ class Square {
 
     updateFontSize() { }
 
-    drawSquare(ctx) {
+    drawSquare() {
         window.requestAnimationFrame(() => {
-            ctx.strokeStyle = this.color;
-            ctx.lineWidth = this.lineWidth;
+            this.context.strokeStyle = this.color;
+            this.context.lineWidth = this.lineWidth;
 
             // left
-            ctx.beginPath();
-            ctx.moveTo(this.startPoint.x, this.startPoint.y);
-            ctx.lineTo(this.startPoint.x, this.endPoint.y);
-            ctx.stroke();
+            this.context.beginPath();
+            this.context.moveTo(this.startPoint.x, this.startPoint.y);
+            this.context.lineTo(this.startPoint.x, this.endPoint.y);
+            this.context.stroke();
             //top
-            ctx.beginPath();
-            ctx.moveTo(this.startPoint.x, this.startPoint.y);
-            ctx.lineTo(this.endPoint.x, this.startPoint.y);
-            ctx.stroke();
+            this.context.beginPath();
+            this.context.moveTo(this.startPoint.x, this.startPoint.y);
+            this.context.lineTo(this.endPoint.x, this.startPoint.y);
+            this.context.stroke();
             // right
-            ctx.beginPath();
-            ctx.moveTo(this.endPoint.x, this.startPoint.y);
-            ctx.lineTo(this.endPoint.x, this.endPoint.y);
-            ctx.stroke();
+            this.context.beginPath();
+            this.context.moveTo(this.endPoint.x, this.startPoint.y);
+            this.context.lineTo(this.endPoint.x, this.endPoint.y);
+            this.context.stroke();
             // bottom
-            ctx.beginPath();
-            ctx.moveTo(this.startPoint.x, this.endPoint.y);
-            ctx.lineTo(this.endPoint.x, this.endPoint.y);
-            ctx.stroke();
+            this.context.beginPath();
+            this.context.moveTo(this.startPoint.x, this.endPoint.y);
+            this.context.lineTo(this.endPoint.x, this.endPoint.y);
+            this.context.stroke();
         });
     }
 }

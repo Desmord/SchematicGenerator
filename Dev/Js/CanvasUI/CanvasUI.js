@@ -20,15 +20,15 @@ class CanvasUI {
     setCanvasEvents() {
 
         DOMObjects.getCanvas().addEventListener(`mousedown`, (e) => {
-            this.currentTool.onMouseDown(e.target,e.clientX,e.clientY);
+            this.currentTool.onMouseDown(e.clientX,e.clientY);
         })
 
         DOMObjects.getCanvas().addEventListener(`mousemove`, (e) => {
-            this.currentTool.onMouseMove(e.target,e.clientX,e.clientY);
+            this.currentTool.onMouseMove(e.clientX,e.clientY);
         })
 
         DOMObjects.getCanvas().addEventListener(`mouseup`, (e) => {
-            this.currentTool.onMouseUp(e.target,e.clientX,e.clientY);
+            this.currentTool.onMouseUp(e.clientX,e.clientY);
         })
 
     }
